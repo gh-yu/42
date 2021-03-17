@@ -7,6 +7,6 @@ int		main(void)
 {
 	char base[] = "0123456789";
 
-	ft_putnbr_base(2147483647, base);
+	ft_putnbr_base(-2147483648, base);
 	return 0;
 }

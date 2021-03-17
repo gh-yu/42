@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyu <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: gyu <gyu@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 02:08:07 by gyu               #+#    #+#             */
-/*   Updated: 2021/03/17 18:21:15 by gyu              ###   ########.fr       */
+/*   Created: 2021/03/17 19:13:02 by gyu               #+#    #+#             */
+/*   Updated: 2021/03/17 19:16:59 by gyu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_sqrt(int nb)
-{
-	long long i;
+#include <unistd.h>
 
-	if (nb <= 0)
-		return (0);
-	i = 1;
-	while (i * i <= nb)
-	{
-		if (i * i == nb)
-			return (i);
-		i++;
-	}
-	return (0);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int		ft_ten_queens_puzzle(void)
+{
+
 }

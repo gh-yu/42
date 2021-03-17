@@ -8,7 +8,7 @@ int		main(void)
 	char s1[] = " is my name";
 	char s2[50] = "gyu";
 
-	unsigned int total_len = ft_strlcat(s2, s1, -5);
+	unsigned int total_len = ft_strlcat(s2, s1, 4);
 	printf("my_strlcat : %s\n", s2);
 	printf("total_len : %d\n", total_len);
 
