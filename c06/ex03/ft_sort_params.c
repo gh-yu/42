@@ -6,7 +6,7 @@
 /*   By: gyu <gyu@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 03:28:41 by gyu               #+#    #+#             */
-/*   Updated: 2021/03/18 04:38:27 by gyu              ###   ########.fr       */
+/*   Updated: 2021/03/18 22:48:25 by gyu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	ft_sort(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		j = 1;
+		j = i + 1;
 		while (j < argc)
 		{
-			if (ft_strcmp(argv[j - 1], argv[j]) > 0)
+			if (ft_strcmp(argv[i], argv[j]) > 0)
 			{
-				temp = argv[j - 1];
-				argv[j - 1] = argv[j];
+				temp = argv[i];
+				argv[i] = argv[j];
 				argv[j] = temp;
 			}
 			j++;
