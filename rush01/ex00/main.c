@@ -3,99 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: byahn <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: hyojekim <hyojekim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/13 15:49:23 by byahn             #+#    #+#             */
-/*   Updated: 2021/03/13 20:40:58 by byahn            ###   ########.fr       */
+/*   Created: 2021/03/06 22:47:15 by hyojekim          #+#    #+#             */
+/*   Updated: 2021/03/07 18:51:39 by hyojekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers.h"
-
-void	print_error(void)
-{
-	write(1, "Error\n", 6);
-}
-
-int		ft_strlen(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-int		strlen_until_line(char *str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i] != '\n' && str[i] != '\0')
-		i++;
-	return (i);
-}
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putstr(char *str)
-{
-	while(*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
-}
-
-char	*file_to_str(char *filename, int *line_count)
-{
-	char	*str;
-	int		i;
-	int		fd;
-	char	buf;
-
-	i = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		print_error();
-		return (0);
-	}
-	while (0 < read(fd, &buf, 1))
-		i++;
-	str = (char *)malloc(sizeof(char) * i);
-	i = 0;
-	fd = open(filename, O_RDONLY);
-	while (0 < read(fd, &buf, 1))
-	{
-		if (buf == '\n')
-			(*line_count)++;
-		str[i] = buf;
-		i++;
-	}
-	close(fd);
-	return (str);
-}
-void	str_to_dict(char *str, t_dict *dict)
-{
-	int		i;
-	char	*tmp;
-
-}
+#include <unistd.h>
+#include "setting.h"
+#include "start_program.h"
 
 int		main(int argc, char *argv[])
 {
-	char	*str;
-	t_dict	*dict;
-	int		line_count;
+	int error;
 
-	line_count = 0;
-	str = file_to_str("./numbers.dict", &line_count);
-	dict = (t_dict *)malloc(sizeof(t_dict) * line_count);
-	ft_putstr(str);
+	error = 0;
+	if (argc != 2)
+		error = 1;
+	else
+	{
+		if (!validate_input(argv[1]))
+			error = 1;
+		else
+			error = !start_program(argv[1]);
+	}
+	if (error == 1)
+		ft_error_msg();
 	return (0);
+}
+
+int		validate_input(char *str)
+{
+	int i;
+	int num;
+
+	i = 0;
+	num = 0;
+	while (str[i])
+	{
+		if (!((str[i] >= '1' && str[i] <= '4') || str[i] == ' '))
+			return (0);
+		else if (i % 2 == 0 && str[i] == ' ')
+			return (0);
+		else if (str[i] >= '1' && str[i] <= '4')
+			num++;
+		i++;
+	}
+	if (num == 16 && i == 31)
+		return (1);
+	else
+		return (0);
+}
+
+void	ft_error_msg(void)
+{
+	write(1, "Error\n", 6);
 }
