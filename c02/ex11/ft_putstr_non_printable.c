@@ -6,7 +6,7 @@
 /*   By: gyu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 01:15:56 by gyu               #+#    #+#             */
-/*   Updated: 2021/03/16 18:00:03 by gyu              ###   ########.fr       */
+/*   Updated: 2021/03/18 14:08:40 by gyu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_putstr_non_printable(char *str)
 		if (str[i] < 32 || str[i] == 127)
 		{
 			write(1, "\\", 1);
-			ft_change_hex((unsigned char)str[i]);
+			ft_change_hex(str[i]);
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: gyu <gyu@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 00:32:29 by gyu               #+#    #+#             */
-/*   Updated: 2021/03/17 03:51:27 by gyu              ###   ########.fr       */
+/*   Updated: 2021/03/18 14:14:11 by gyu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,14 @@ void	ft_putnbr_base(int nbr, char *base)
 	if (!validate_base(base))
 		return ;
 	else if (nbr == 0)
-		ft_putchar(base[nbr % base_len]);
-	while (base[base_len])
-		base_len++;
-	ft_change_base(nbr, base, base_len);
+		ft_putchar(base[nbr]);
+	else
+	{
+		while (base[base_len])
+		{
+			base_len++;
+		}
+		ft_change_base(nbr, base, base_len);
+	}
 }
+
